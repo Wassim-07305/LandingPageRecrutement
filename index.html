@@ -379,7 +379,7 @@
        ======================================== */
     .tools-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: repeat(3, 1fr);
       gap: 16px;
     }
 
@@ -427,6 +427,21 @@
       color: var(--text-secondary);
       font-size: 0.9rem;
       line-height: 1.6;
+    }
+
+    .tool-card__bonus {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      font-size: 0.6rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--text-muted);
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid var(--border-light);
+      border-radius: 4px;
+      padding: 3px 8px;
     }
 
     /* ========================================
@@ -853,10 +868,26 @@
         </div>
         <div class="hero__badge">
           <div class="hero__badge-label">Type</div>
-          <div class="hero__badge-value">Temps Partiel</div>
+          <div class="hero__badge-value">Freelance — Flexible</div>
         </div>
       </div>
     </section>
+
+    <hr class="section-separator container">
+
+    <!-- ============================
+         JOB SUMMARY
+         ============================ -->
+    <section id="job-summary" class="container">
+      <div class="two-col reveal">
+        <div class="two-col__label">Résumé du Poste</div>
+        <div class="two-col__content">
+          <p>On développe des applications web sur-mesure pour des coaches, consultants et formateurs qui scalent leur business. On livre 5+ apps par mois, chaque projet suit une méthodologie précise (ESA), et chaque étape est documentée dans des SOPs détaillés. Tu seras accompagné au démarrage, mais on cherche quelqu'un qui prend les rênes rapidement. Tu es le premier dev de l'équipe — à terme, tu gères les prochains.</p>
+        </div>
+      </div>
+    </section>
+
+    <hr class="section-separator container">
 
     <!-- ============================
          VIDEO PLACEHOLDER
@@ -876,20 +907,6 @@
           <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
             <polygon points="6,3 20,12 6,21" />
           </svg>
-        </div>
-      </div>
-    </section>
-
-    <hr class="section-separator container">
-
-    <!-- ============================
-         JOB SUMMARY
-         ============================ -->
-    <section id="job-summary" class="container">
-      <div class="two-col reveal">
-        <div class="two-col__label">Résumé du Poste</div>
-        <div class="two-col__content">
-          <p>Rejoins une structure en pleine croissance spécialisée dans le développement d'applications web sur-mesure pour des coaches, consultants et formateurs. Tu seras en charge de développer et livrer des apps complètes en suivant des process établis (SOPs détaillés), avec un accompagnement au démarrage. Si tu es autonome, rigoureux et que tu veux évoluer dans un environnement ambitieux avec une vision long terme, ce poste est fait pour toi.</p>
         </div>
       </div>
     </section>
@@ -920,13 +937,13 @@
         <div class="two-col__label">Candidat Idéal</div>
         <div class="two-col__content">
           <ul class="bullet-list">
-            <li><strong>Autonome</strong> — Tu sais avancer sans qu'on te tienne la main à chaque étape</li>
-            <li><strong>Rigoureux</strong> — Tu livres un travail propre, testé, dans les délais</li>
-            <li><strong>Organisé</strong> — Tu gères plusieurs projets en parallèle sans te perdre</li>
-            <li><strong>Bon communicant</strong> — Tu fais des points réguliers, poses les bonnes questions, ne restes pas bloqué en silence</li>
-            <li><strong>Orienté solution</strong> — Quand tu rencontres un problème, tu cherches la solution avant de demander de l'aide</li>
-            <li><strong>Curieux et en apprentissage continu</strong> — Tu te formes, tu explores, tu t'améliores constamment</li>
-            <li><strong>Fiable</strong> — On peut compter sur toi, tu respectes tes engagements</li>
+            <li>Tu gères <strong>3 à 5 projets en parallèle</strong> sans perdre le fil — chacun avec ses deadlines, ses specs, et ses clients différents</li>
+            <li>Tu codes avec <strong>Claude Code tous les jours</strong> et tu sais en tirer le maximum — c'est ton copilote, pas ta béquille</li>
+            <li>Quand t'es bloqué, tu cherches la solution pendant 30 min avant de demander. <strong>Mais tu demandes.</strong> Tu restes pas bloqué 3 jours en silence.</li>
+            <li>Tu livres le vendredi ce que t'as promis le lundi. <strong>Pas d'excuses</strong>, pas de "j'ai eu un imprévu". Si t'as un vrai problème, tu préviens en avance.</li>
+            <li>Tu fais des <strong>points réguliers</strong> sans qu'on te le demande — un message rapide sur l'avancement, ça suffit</li>
+            <li>Tu es en mode <strong>apprentissage permanent</strong> — tu te formes sur les nouveaux outils, tu lis la doc, tu testes des trucs le weekend</li>
+            <li>Tu veux <strong>construire quelque chose</strong>, pas juste "faire des missions". Tu vois ce poste comme une opportunité de grandir, pas un gagne-pain temporaire.</li>
           </ul>
         </div>
       </div>
@@ -943,16 +960,28 @@
         <div class="two-col__content">
           <div class="req-cards">
             <div class="req-card">
-              <div class="req-card__title">Développement Front-End & Back-End</div>
-              <div class="req-card__desc">Capacité à construire des applications complètes de A à Z — interfaces modernes et responsives côté front, logique métier et gestion des données côté back. Stack principal : Next.js / React + Supabase.</div>
+              <div class="req-card__title">Développement Full-Stack (Next.js + Supabase)</div>
+              <div class="req-card__desc">Tu sais construire une app complète de A à Z. Front : interfaces modernes et responsives avec React/Next.js + Tailwind. Back : logique métier, Supabase (PostgreSQL, auth, storage, real-time).</div>
             </div>
             <div class="req-card">
               <div class="req-card__title">Maîtrise de Claude Code (obligatoire)</div>
-              <div class="req-card__desc">Tu utilises Claude Code comme ton outil principal de développement assisté par IA. C'est au cœur de notre workflow — c'est ce qui nous permet de livrer des apps complètes en un temps record.</div>
+              <div class="req-card__desc">C'est ton outil principal. Tu codes avec Claude Code pour accélérer la livraison. Si tu ne l'utilises pas encore, ce poste n'est pas pour toi.</div>
             </div>
             <div class="req-card">
-              <div class="req-card__title">Déploiement & Mise en production</div>
-              <div class="req-card__desc">Savoir déployer une application, configurer un domaine custom, gérer les variables d'environnement, et maintenir une app en production sur Vercel ou équivalent.</div>
+              <div class="req-card__title">Apps type dashboard / espace client / CRM</div>
+              <div class="req-card__desc">C'est le cœur de nos projets. Chaque app client inclut des dashboards, des espaces utilisateurs avec rôles (admin, client, coach), et de la gestion de données.</div>
+            </div>
+            <div class="req-card">
+              <div class="req-card__title">Intégration d'APIs tierces</div>
+              <div class="req-card__desc">Tu sais intégrer Stripe (paiements), OpenAI (IA), WhatsApp Business API, et d'autres services. Tu lis une doc d'API et tu l'intègres sans qu'on te guide.</div>
+            </div>
+            <div class="req-card">
+              <div class="req-card__title">PWA et notifications push</div>
+              <div class="req-card__desc">Nos apps sont des Progressive Web Apps installables. Tu sais configurer un service worker, les notifications push (VAPID), et le mode offline.</div>
+            </div>
+            <div class="req-card">
+              <div class="req-card__title">Déploiement & mise en production</div>
+              <div class="req-card__desc">Vercel, GitHub, domaine custom, variables d'environnement, DNS. Tu sais mettre une app en prod et la maintenir.</div>
             </div>
           </div>
         </div>
@@ -1012,6 +1041,36 @@
               <div class="tool-card__name">Vercel + Git</div>
               <div class="tool-card__desc">Déploiement et hébergement de toutes nos apps. Chaque projet est versionné sur GitHub et déployé automatiquement via Vercel.</div>
             </div>
+            <div class="tool-card" style="position: relative;">
+              <span class="tool-card__bonus">bonus</span>
+              <div class="tool-card__icon" style="background: rgba(249, 115, 22, 0.15);">
+                <!-- Logo N8N — workflow nodes -->
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <circle cx="6" cy="12" r="3" stroke="#fb923c" stroke-width="1.5"/>
+                  <circle cx="18" cy="6" r="3" stroke="#fb923c" stroke-width="1.5"/>
+                  <circle cx="18" cy="18" r="3" stroke="#fb923c" stroke-width="1.5"/>
+                  <line x1="9" y1="11" x2="15" y2="7" stroke="#fb923c" stroke-width="1.5"/>
+                  <line x1="9" y1="13" x2="15" y2="17" stroke="#fb923c" stroke-width="1.5"/>
+                </svg>
+              </div>
+              <div class="tool-card__name">N8N / Automatisations</div>
+              <div class="tool-card__desc">On automatise des workflows pour nos clients. Si tu connais N8N ou des outils similaires (Make, Zapier), c'est un plus.</div>
+            </div>
+            <div class="tool-card" style="position: relative;">
+              <span class="tool-card__bonus">bonus</span>
+              <div class="tool-card__icon" style="background: rgba(236, 72, 153, 0.15);">
+                <!-- Logo Figma — pen tool -->
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <rect x="6" y="2" width="5" height="7" rx="2.5" stroke="#f472b6" stroke-width="1.5"/>
+                  <rect x="13" y="2" width="5" height="7" rx="2.5" stroke="#f472b6" stroke-width="1.5"/>
+                  <rect x="6" y="9" width="5" height="7" rx="2.5" stroke="#f472b6" stroke-width="1.5"/>
+                  <rect x="6" y="16" width="5" height="6" rx="2.5" stroke="#f472b6" stroke-width="1.5"/>
+                  <circle cx="15.5" cy="12.5" r="2.5" stroke="#f472b6" stroke-width="1.5"/>
+                </svg>
+              </div>
+              <div class="tool-card__name">Figma</div>
+              <div class="tool-card__desc">Savoir lire une maquette Figma et la transformer en composants React. Pas besoin de designer, mais savoir interpréter un design.</div>
+            </div>
           </div>
         </div>
       </div>
@@ -1026,6 +1085,7 @@
       <div class="two-col reveal">
         <div class="two-col__label">Rémunération</div>
         <div class="two-col__content">
+          <p class="comp-intro" style="color: var(--text-secondary); line-height: 1.7; font-size: 1rem; margin-bottom: 24px;">On ne paye pas à l'heure. On paye au projet livré. Plus tu livres, plus tu gagnes. Notre objectif : te garantir un flux régulier pour que tu puisses en vivre confortablement.</p>
           <div class="comp-cards">
             <div class="comp-card">
               <div class="comp-card__title">Rythme Standard</div>
@@ -1059,6 +1119,7 @@
             </div>
           </div>
           <p class="comp-note">La rémunération est indexée sur le volume de projets livrés. Plus tu livres, plus tu gagnes. Notre objectif est de te garantir un flux régulier de projets.</p>
+          <p class="comp-note" style="margin-top: 12px;">Les montants sont nets (tu es freelance/auto-entrepreneur). Paiement à chaque projet livré et validé.</p>
         </div>
       </div>
     </section>
@@ -1091,7 +1152,7 @@
             </div>
             <div class="wydo-card">
               <div class="wydo-card__number">005</div>
-              <div class="wydo-card__text">Évoluer avec la structure — à terme, tu auras l'opportunité de gérer une équipe de développeurs et de monter en responsabilités et en rémunération.</div>
+              <div class="wydo-card__text">Évoluer avec la structure — tu es le premier développeur. L'objectif à 6 mois : tu gères 2-3 devs juniors, tu supervises la qualité des livrables, et ta rémunération évolue en conséquence. On construit l'équipe ensemble.</div>
             </div>
           </div>
         </div>
@@ -1113,7 +1174,7 @@
             <li>Tu n'utilises pas Claude Code ou tu refuses de travailler avec des outils d'IA. C'est central dans notre façon de travailler.</li>
             <li>Tu attends qu'on te dise exactement quoi faire à chaque micro-étape. On cherche de l'autonomie.</li>
             <li>Tu ne parles pas français couramment. Tous nos clients sont francophones.</li>
-            <li>Tu n'es pas en mesure de gérer 3+ projets en parallèle avec des deadlines différentes.</li>
+            <li>Tu paniques quand t'as 3 projets en même temps avec des deadlines différentes. Ici, c'est le quotidien — et c'est gérable grâce aux SOPs et à Claude Code, mais faut être à l'aise avec ça.</li>
           </ul>
         </div>
       </div>
