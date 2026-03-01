@@ -39,6 +39,7 @@
       scroll-behavior: smooth;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
+      overflow-x: hidden;
     }
 
     body {
@@ -47,6 +48,7 @@
       color: var(--text-primary);
       line-height: 1.6;
       overflow-x: hidden;
+      width: 100%;
     }
 
     /* ========================================
@@ -63,6 +65,7 @@
       height: 1px;
       background: var(--separator);
       margin: 0;
+      max-width: 100%;
     }
 
     /* Layout 2 colonnes label/content */
@@ -493,6 +496,13 @@
       border-top: 1px solid var(--border);
     }
 
+    /* Effet fumée / blur sur les prix */
+    .blurred {
+      filter: blur(6px);
+      user-select: none;
+      transition: filter 0.4s ease;
+    }
+
     .comp-note {
       color: var(--text-muted);
       font-size: 0.85rem;
@@ -683,13 +693,13 @@
       }
 
       .hero {
-        padding-top: 110px;
+        padding-top: 100px;
         padding-bottom: 40px;
       }
 
       .hero__title {
-        font-size: clamp(2.2rem, 9vw, 3.5rem);
-        margin-bottom: 32px;
+        font-size: clamp(2rem, 8vw, 3rem);
+        margin-bottom: 28px;
       }
 
       .hero__badges {
@@ -1021,31 +1031,31 @@
               <div class="comp-card__title">Rythme Standard</div>
               <div class="comp-card__subtitle">3 projets / mois</div>
               <ul class="comp-card__list">
-                <li>~750€ / semaine</li>
-                <li>3 000€ / mois</li>
-                <li>36 000€ / an</li>
+                <li><span class="blurred">~750€ / semaine</span></li>
+                <li><span class="blurred">3 000€ / mois</span></li>
+                <li><span class="blurred">36 000€ / an</span></li>
               </ul>
-              <div class="comp-card__total">3 000€ / mois — 36 000€ / an</div>
+              <div class="comp-card__total"><span class="blurred">3 000€ / mois — 36 000€ / an</span></div>
             </div>
             <div class="comp-card">
               <div class="comp-card__title">Objectif Réaliste</div>
               <div class="comp-card__subtitle">4-5 projets / mois</div>
               <ul class="comp-card__list">
-                <li>~1 000 – 1 250€ / semaine</li>
-                <li>4 000 – 5 000€ / mois</li>
-                <li>48 000 – 60 000€ / an</li>
+                <li><span class="blurred">~1 000 – 1 250€ / semaine</span></li>
+                <li><span class="blurred">4 000 – 5 000€ / mois</span></li>
+                <li><span class="blurred">48 000 – 60 000€ / an</span></li>
               </ul>
-              <div class="comp-card__total">4 000 – 5 000€ / mois — 48 000 – 60 000€ / an</div>
+              <div class="comp-card__total"><span class="blurred">4 000 – 5 000€ / mois — 48 000 – 60 000€ / an</span></div>
             </div>
             <div class="comp-card">
               <div class="comp-card__title">Haute Performance</div>
               <div class="comp-card__subtitle">6+ projets / mois</div>
               <ul class="comp-card__list">
-                <li>~1 500€+ / semaine</li>
-                <li>6 000€+ / mois</li>
-                <li>72 000€+ / an</li>
+                <li><span class="blurred">~1 500€+ / semaine</span></li>
+                <li><span class="blurred">6 000€+ / mois</span></li>
+                <li><span class="blurred">72 000€+ / an</span></li>
               </ul>
-              <div class="comp-card__total">6 000€+ / mois — 72 000€+ / an</div>
+              <div class="comp-card__total"><span class="blurred">6 000€+ / mois — 72 000€+ / an</span></div>
             </div>
           </div>
           <p class="comp-note">La rémunération est indexée sur le volume de projets livrés. Plus tu livres, plus tu gagnes. Notre objectif est de te garantir un flux régulier de projets.</p>
