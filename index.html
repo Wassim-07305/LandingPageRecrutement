@@ -1,0 +1,1194 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Développeur Full-Stack — Wassim Ahmane</title>
+  <meta name="description" content="Rejoins une structure ambitieuse en tant que développeur full-stack. Applications web sur-mesure pour coaches, consultants et formateurs.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=DM+Serif+Display&display=swap" rel="stylesheet">
+  <style>
+    /* ========================================
+       RESET & BASE
+       ======================================== */
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --bg-primary: #0a0a0a;
+      --bg-card: #141414;
+      --bg-card-hover: #1a1a1a;
+      --border: #1f1f1f;
+      --border-light: #2a2a2a;
+      --text-primary: #ffffff;
+      --text-secondary: #a0a0a0;
+      --text-muted: #666666;
+      --accent: #3b82f6;
+      --accent-hover: #2563eb;
+      --separator: #1a1a1a;
+      --red: #ef4444;
+      --font-display: 'DM Serif Display', serif;
+      --font-body: 'DM Sans', sans-serif;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    body {
+      font-family: var(--font-body);
+      background-color: var(--bg-primary);
+      color: var(--text-primary);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* ========================================
+       UTILITIES
+       ======================================== */
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .section-separator {
+      border: none;
+      height: 1px;
+      background: var(--separator);
+      margin: 0;
+    }
+
+    /* Layout 2 colonnes label/content */
+    .two-col {
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      gap: 60px;
+      padding: 80px 0;
+    }
+
+    .two-col__label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--text-muted);
+      padding-top: 4px;
+    }
+
+    .two-col__content h3 {
+      font-family: var(--font-body);
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 16px;
+    }
+
+    .two-col__content p {
+      color: var(--text-secondary);
+      line-height: 1.7;
+      font-size: 1rem;
+    }
+
+    .two-col__content p + p {
+      margin-top: 16px;
+    }
+
+    /* Scroll animations */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+                  transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ========================================
+       NAVBAR
+       ======================================== */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      padding: 0 24px;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      transition: background 0.3s ease, border-color 0.3s ease;
+      border-bottom: 1px solid transparent;
+    }
+
+    .navbar.scrolled {
+      background: rgba(10, 10, 10, 0.85);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom-color: var(--border);
+    }
+
+    .navbar__inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .navbar__logo {
+      font-family: var(--font-body);
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--text-primary);
+      text-decoration: none;
+    }
+
+    .navbar__links {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+    }
+
+    .navbar__links a {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: color 0.2s ease;
+      font-weight: 500;
+    }
+
+    .navbar__links a:hover {
+      color: var(--text-primary);
+    }
+
+    .navbar__menu-btn {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+    }
+
+    .navbar__menu-btn span {
+      display: block;
+      width: 20px;
+      height: 2px;
+      background: var(--text-primary);
+      margin: 5px 0;
+      transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+
+    /* ========================================
+       HERO
+       ======================================== */
+    .hero {
+      padding-top: 140px;
+      padding-bottom: 60px;
+    }
+
+    .hero__title {
+      font-family: var(--font-display);
+      font-size: clamp(2.8rem, 7vw, 5.5rem);
+      font-weight: 400;
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      margin-bottom: 48px;
+    }
+
+    .hero__badges {
+      display: flex;
+      gap: 0;
+    }
+
+    .hero__badge {
+      padding: 20px 28px;
+      border: 1px solid var(--border);
+      border-right: none;
+    }
+
+    .hero__badge:first-child {
+      border-radius: 8px 0 0 8px;
+    }
+
+    .hero__badge:last-child {
+      border-right: 1px solid var(--border);
+      border-radius: 0 8px 8px 0;
+    }
+
+    .hero__badge-label {
+      font-size: 0.65rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+    }
+
+    .hero__badge-value {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      white-space: nowrap;
+    }
+
+    /* ========================================
+       VIDEO PLACEHOLDER
+       ======================================== */
+    .video-section {
+      padding: 0 0 80px;
+    }
+
+    .video-placeholder {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      background: var(--bg-card);
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+      transition: border-color 0.3s ease;
+    }
+
+    .video-placeholder:hover {
+      border-color: var(--border-light);
+    }
+
+    .video-placeholder:hover .play-btn {
+      transform: scale(1.08);
+      background: rgba(255, 255, 255, 0.15);
+    }
+
+    .play-btn {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.3s ease, background 0.3s ease;
+    }
+
+    .play-btn svg {
+      width: 24px;
+      height: 24px;
+      fill: var(--text-primary);
+      margin-left: 3px;
+    }
+
+    /* Placeholder pour l'embed vidéo futur */
+    /* <iframe src="YOUTUBE_URL" ...></iframe> */
+    /* <video src="video.mp4" controls></video> */
+
+    /* ========================================
+       BULLET LISTS (Ideal Candidate & Shouldn't Apply)
+       ======================================== */
+    .bullet-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .bullet-list li {
+      color: var(--text-secondary);
+      line-height: 1.7;
+      padding-left: 24px;
+      position: relative;
+      font-size: 1rem;
+    }
+
+    .bullet-list li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 10px;
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--text-primary);
+    }
+
+    .bullet-list li strong {
+      color: var(--text-primary);
+      font-weight: 600;
+    }
+
+    .bullet-list--red li::before {
+      background: var(--red);
+    }
+
+    /* ========================================
+       REQUIREMENT CARDS
+       ======================================== */
+    .req-cards {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .req-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 28px 32px;
+      transition: border-color 0.3s ease, background 0.3s ease;
+    }
+
+    .req-card:hover {
+      border-color: var(--border-light);
+      background: var(--bg-card-hover);
+    }
+
+    .req-card__title {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 8px;
+    }
+
+    .req-card__desc {
+      color: var(--text-secondary);
+      line-height: 1.7;
+      font-size: 0.95rem;
+    }
+
+    /* ========================================
+       TOOLS GRID
+       ======================================== */
+    .tools-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .tool-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 28px;
+      transition: border-color 0.3s ease, background 0.3s ease;
+    }
+
+    .tool-card:hover {
+      border-color: var(--border-light);
+      background: var(--bg-card-hover);
+    }
+
+    .tool-card__icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      margin-bottom: 16px;
+    }
+
+    .tool-card__icon--purple { background: rgba(139, 92, 246, 0.15); }
+    .tool-card__icon--blue   { background: rgba(59, 130, 246, 0.15); }
+    .tool-card__icon--green  { background: rgba(34, 197, 94, 0.15); }
+    .tool-card__icon--cyan   { background: rgba(6, 182, 212, 0.15); }
+
+    .tool-card__name {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 8px;
+    }
+
+    .tool-card__desc {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+      line-height: 1.6;
+    }
+
+    /* ========================================
+       COMPENSATION CARDS
+       ======================================== */
+    .comp-cards {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .comp-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 28px 32px;
+      transition: border-color 0.3s ease, background 0.3s ease;
+    }
+
+    .comp-card:hover {
+      border-color: var(--border-light);
+      background: var(--bg-card-hover);
+    }
+
+    .comp-card__title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 4px;
+    }
+
+    .comp-card__subtitle {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+      font-weight: 500;
+    }
+
+    .comp-card__list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin-bottom: 16px;
+    }
+
+    .comp-card__list li {
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+      padding-left: 18px;
+      position: relative;
+    }
+
+    .comp-card__list li::before {
+      content: '·';
+      position: absolute;
+      left: 4px;
+      font-weight: 700;
+      color: var(--text-muted);
+    }
+
+    .comp-card__total {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--accent);
+      padding-top: 12px;
+      border-top: 1px solid var(--border);
+    }
+
+    .comp-note {
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      font-style: italic;
+      line-height: 1.6;
+      margin-top: 20px;
+    }
+
+    /* ========================================
+       WHAT YOU'LL DO GRID
+       ======================================== */
+    .wydo-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .wydo-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 28px;
+      transition: border-color 0.3s ease, background 0.3s ease;
+    }
+
+    .wydo-card:hover {
+      border-color: var(--border-light);
+      background: var(--bg-card-hover);
+    }
+
+    .wydo-card__number {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 42px;
+      height: 42px;
+      border-radius: 8px;
+      background: var(--accent);
+      color: var(--text-primary);
+      font-size: 0.75rem;
+      font-weight: 700;
+      font-family: 'DM Sans', monospace;
+      letter-spacing: 0.05em;
+      margin-bottom: 16px;
+    }
+
+    .wydo-card__text {
+      color: var(--text-secondary);
+      font-size: 0.93rem;
+      line-height: 1.7;
+    }
+
+    /* ========================================
+       CTA SECTION
+       ======================================== */
+    .cta {
+      padding: 100px 0;
+      text-align: center;
+      background: linear-gradient(180deg, var(--bg-primary) 0%, #0a0a1e 50%, #0c0c2a 100%);
+      position: relative;
+    }
+
+    .cta::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 600px;
+      height: 400px;
+      background: radial-gradient(ellipse, rgba(59, 130, 246, 0.06) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .cta__title {
+      font-family: var(--font-display);
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      margin-bottom: 36px;
+      position: relative;
+    }
+
+    .cta__btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--text-primary);
+      color: var(--bg-primary);
+      font-family: var(--font-body);
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 18px 48px;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.3s ease;
+      position: relative;
+    }
+
+    .cta__btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 0 40px rgba(59, 130, 246, 0.2),
+                  0 8px 32px rgba(0, 0, 0, 0.4);
+    }
+
+    .cta__btn:active {
+      transform: translateY(0);
+    }
+
+    /* ========================================
+       FOOTER
+       ======================================== */
+    .footer {
+      padding: 40px 0;
+      text-align: center;
+      border-top: 1px solid var(--separator);
+    }
+
+    .footer__text {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      font-weight: 400;
+    }
+
+    /* ========================================
+       MOBILE MENU OVERLAY
+       ======================================== */
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 999;
+      background: rgba(10, 10, 10, 0.97);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 32px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+
+    .mobile-menu.open {
+      display: flex;
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    .mobile-menu a {
+      font-size: 1.2rem;
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.2s ease;
+    }
+
+    .mobile-menu a:hover {
+      color: var(--text-primary);
+    }
+
+    .mobile-menu__close {
+      position: absolute;
+      top: 20px;
+      right: 24px;
+      background: none;
+      border: none;
+      color: var(--text-primary);
+      font-size: 1.8rem;
+      cursor: pointer;
+      padding: 4px;
+      line-height: 1;
+    }
+
+    /* ========================================
+       RESPONSIVE
+       ======================================== */
+    @media (max-width: 768px) {
+      .navbar__links {
+        display: none;
+      }
+
+      .navbar__menu-btn {
+        display: block;
+      }
+
+      .hero {
+        padding-top: 110px;
+        padding-bottom: 40px;
+      }
+
+      .hero__title {
+        font-size: clamp(2.2rem, 9vw, 3.5rem);
+        margin-bottom: 32px;
+      }
+
+      .hero__badges {
+        flex-wrap: wrap;
+        gap: 0;
+      }
+
+      .hero__badge {
+        flex: 1 1 calc(50% - 0px);
+        min-width: 140px;
+        padding: 16px 20px;
+        border-right: none;
+        border-bottom: none;
+      }
+
+      .hero__badge:first-child {
+        border-radius: 8px 0 0 0;
+      }
+
+      .hero__badge:nth-child(2) {
+        border-right: 1px solid var(--border);
+        border-radius: 0 8px 0 0;
+      }
+
+      .hero__badge:nth-child(3) {
+        border-bottom: 1px solid var(--border);
+        border-radius: 0 0 0 8px;
+      }
+
+      .hero__badge:last-child {
+        border-right: 1px solid var(--border);
+        border-bottom: 1px solid var(--border);
+        border-radius: 0 0 8px 0;
+      }
+
+      .two-col {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        padding: 48px 0;
+      }
+
+      .tools-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .wydo-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .video-section {
+        padding: 0 0 48px;
+      }
+
+      .play-btn {
+        width: 64px;
+        height: 64px;
+      }
+
+      .play-btn svg {
+        width: 20px;
+        height: 20px;
+      }
+
+      .cta {
+        padding: 64px 0;
+      }
+
+      .cta__btn {
+        padding: 16px 36px;
+        font-size: 0.8rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .container {
+        padding: 0 16px;
+      }
+
+      .hero__badges {
+        flex-direction: column;
+      }
+
+      .hero__badge {
+        flex: 1 1 100%;
+        border-right: 1px solid var(--border) !important;
+        border-bottom: none !important;
+        border-radius: 0 !important;
+      }
+
+      .hero__badge:first-child {
+        border-radius: 8px 8px 0 0 !important;
+      }
+
+      .hero__badge:last-child {
+        border-bottom: 1px solid var(--border) !important;
+        border-radius: 0 0 8px 8px !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ============================
+       NAVBAR
+       ============================ -->
+  <nav class="navbar" id="navbar">
+    <div class="navbar__inner">
+      <a href="#" class="navbar__logo">Wassim Ahmane</a>
+      <ul class="navbar__links">
+        <li><a href="#job-summary">Job Summary</a></li>
+        <li><a href="#requirements">Requirements</a></li>
+        <li><a href="#what-youll-do">What You'll Do</a></li>
+        <li><a href="#apply">Apply Now</a></li>
+      </ul>
+      <button class="navbar__menu-btn" id="menu-btn" aria-label="Ouvrir le menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Menu mobile -->
+  <div class="mobile-menu" id="mobile-menu">
+    <button class="mobile-menu__close" id="menu-close" aria-label="Fermer le menu">&times;</button>
+    <a href="#job-summary">Job Summary</a>
+    <a href="#requirements">Requirements</a>
+    <a href="#what-youll-do">What You'll Do</a>
+    <a href="#apply">Apply Now</a>
+  </div>
+
+  <main>
+
+    <!-- ============================
+         HERO SECTION
+         ============================ -->
+    <section class="hero container">
+      <h1 class="hero__title reveal">Développeur<br>Full-Stack</h1>
+      <div class="hero__badges reveal">
+        <div class="hero__badge">
+          <div class="hero__badge-label">Date Posted</div>
+          <div class="hero__badge-value">Mars 2026</div>
+        </div>
+        <div class="hero__badge">
+          <div class="hero__badge-label">Équipe</div>
+          <div class="hero__badge-value">Délivrabilité</div>
+        </div>
+        <div class="hero__badge">
+          <div class="hero__badge-label">Lieu</div>
+          <div class="hero__badge-value">Remote</div>
+        </div>
+        <div class="hero__badge">
+          <div class="hero__badge-label">Type</div>
+          <div class="hero__badge-value">Part-Time</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================
+         VIDEO PLACEHOLDER
+         ============================ -->
+    <section class="video-section container reveal">
+      <div class="video-placeholder" id="video-placeholder">
+        <!-- Remplacer par un iframe YouTube ou une balise <video> :
+        <iframe
+          src="https://www.youtube.com/embed/VIDEO_ID"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+          style="width:100%;height:100%;position:absolute;top:0;left:0;border-radius:12px;">
+        </iframe>
+        -->
+        <div class="play-btn">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <polygon points="6,3 20,12 6,21" />
+          </svg>
+        </div>
+      </div>
+    </section>
+
+    <hr class="section-separator container">
+
+    <!-- ============================
+         JOB SUMMARY
+         ============================ -->
+    <section id="job-summary" class="container">
+      <div class="two-col reveal">
+        <div class="two-col__label">Job Summary</div>
+        <div class="two-col__content">
+          <p>Rejoins une structure en pleine croissance spécialisée dans le développement d'applications web sur-mesure pour des coaches, consultants et formateurs. Tu seras en charge de développer et livrer des apps complètes en suivant des process établis (SOPs détaillés), avec un accompagnement au démarrage. Si tu es autonome, rigoureux et que tu veux évoluer dans un environnement ambitieux avec une vision long terme, ce poste est fait pour toi.</p>
+        </div>
+      </div>
+    </section>
+
+    <hr class="section-separator container">
+
+    <!-- ============================
+         YOUR ROLE
+         ============================ -->
+    <section class="container">
+      <div class="two-col reveal">
+        <div class="two-col__label">Your Role</div>
+        <div class="two-col__content">
+          <h3>Développeur Full-Stack</h3>
+          <p>En tant que développeur, tu seras responsable de la création d'applications web sur-mesure pour nos clients (coaches, consultants, formateurs). Chaque projet suit une méthodologie précise : extraction du besoin client → structuration → développement, avec des SOPs détaillés qui te guident étape par étape.</p>
+          <p>Tu travailleras sur 3 à 5 projets par mois, avec des délais de livraison de 4 à 6 semaines par app. Tu auras des points réguliers avec le fondateur pour assurer la qualité des livrables et ton évolution.</p>
+        </div>
+      </div>
+    </section>
+
+    <hr class="section-separator container">
+
+    <!-- ============================
+         IDEAL CANDIDATE
+         ============================ -->
+    <section class="container">
+      <div class="two-col reveal">
+        <div class="two-col__label">Ideal Candidate</div>
+        <div class="two-col__content">
+          <ul class="bullet-list">
+            <li><strong>Autonome</strong> — Tu sais avancer sans qu'on te tienne la main à chaque étape</li>
+            <li><strong>Rigoureux</strong> — Tu livres un travail propre, testé, dans les délais</li>
+            <li><strong>Organisé</strong> — Tu gères plusieurs projets en parallèle sans te perdre</li>
+            <li><strong>Bon communicant</strong> — Tu fais des points réguliers, poses les bonnes questions, ne restes pas bloqué en silence</li>
+            <li><strong>Orienté solution</strong> — Quand tu rencontres un problème, tu cherches la solution avant de demander de l'aide</li>
+            <li><strong>Curieux et en apprentissage continu</strong> — Tu te formes, tu explores, tu t'améliores constamment</li>
+            <li><strong>Fiable</strong> — On peut compter sur toi, tu respectes tes engagements</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <hr class="section-separator container">
+
+    <!-- ============================
+         REQUIREMENTS
+         ============================ -->
+    <section id="requirements" class="container">
+      <div class="two-col reveal">
+        <div class="two-col__label">Requirements</div>
+        <div class="two-col__content">
+          <div class="req-cards">
+            <div class="req-card">
+              <div class="req-card__title">Développement Front-End & Back-End</div>
+              <div class="req-card__desc">Capacité à construire des applications complètes de A à Z — interfaces modernes et responsives côté front, logique métier et gestion des données côté back. Stack principal : Next.js / React + Supabase.</div>
+            </div>
+            <div class="req-card">
+              <div class="req-card__title">Maîtrise de Claude Code (obligatoire)</div>
+              <div class="req-card__desc">Tu utilises Claude Code comme ton outil principal de développement assisté par IA. C'est au cœur de notre workflow — c'est ce qui nous permet de livrer des apps complètes en un temps record.</div>
+            </div>
+            <div class="req-card">
+              <div class="req-card__title">Déploiement & Mise en production</div>
+              <div class="req-card__desc">Savoir déployer une application, configurer un domaine custom, gérer les variables d'environnement, et maintenir une app en production sur Vercel ou équivalent.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <hr class="section-separator container">
+
+    <!-- ============================
+         TOOLS
+         ============================ -->
+    <section class="container">
+      <div class="two-col reveal">
+        <div class="two-col__label">Tools</div>
+        <div class="two-col__content">
+          <div class="tools-grid">
+            <div class="tool-card">
+              <div class="tool-card__icon tool-card__icon--purple">🤖</div>
+              <div class="tool-card__name">Claude Code</div>
+              <div class="tool-card__desc">Notre outil principal de développement. Tu codes avec Claude Code pour accélérer la livraison et produire du code de qualité à grande vitesse.</div>
+            </div>
+            <div class="tool-card">
+              <div class="tool-card__icon tool-card__icon--blue">⚡</div>
+              <div class="tool-card__name">Next.js / React</div>
+              <div class="tool-card__desc">Notre stack front-end pour toutes les applications clients. Chaque app est construite en Next.js avec React et Tailwind CSS.</div>
+            </div>
+            <div class="tool-card">
+              <div class="tool-card__icon tool-card__icon--green">🗄️</div>
+              <div class="tool-card__name">Supabase</div>
+              <div class="tool-card__desc">Notre back-end complet — base de données PostgreSQL, authentification, storage, et fonctions real-time pour chaque projet.</div>
+            </div>
+            <div class="tool-card">
+              <div class="tool-card__icon tool-card__icon--cyan">🚀</div>
+              <div class="tool-card__name">Vercel + Git</div>
+              <div class="tool-card__desc">Déploiement et hébergement de toutes nos apps. Chaque projet est versionné sur GitHub et déployé automatiquement via Vercel.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <hr class="section-separator container">
+
+    <!-- ============================
+         COMPENSATION
+         ============================ -->
+    <section class="container">
+      <div class="two-col reveal">
+        <div class="two-col__label">Compensation</div>
+        <div class="two-col__content">
+          <div class="comp-cards">
+            <div class="comp-card">
+              <div class="comp-card__title">Rythme Standard</div>
+              <div class="comp-card__subtitle">3 projets / mois</div>
+              <ul class="comp-card__list">
+                <li>~750€ / semaine</li>
+                <li>3 000€ / mois</li>
+                <li>36 000€ / an</li>
+              </ul>
+              <div class="comp-card__total">3 000€ / mois — 36 000€ / an</div>
+            </div>
+            <div class="comp-card">
+              <div class="comp-card__title">Objectif Réaliste</div>
+              <div class="comp-card__subtitle">4-5 projets / mois</div>
+              <ul class="comp-card__list">
+                <li>~1 000 – 1 250€ / semaine</li>
+                <li>4 000 – 5 000€ / mois</li>
+                <li>48 000 – 60 000€ / an</li>
+              </ul>
+              <div class="comp-card__total">4 000 – 5 000€ / mois — 48 000 – 60 000€ / an</div>
+            </div>
+            <div class="comp-card">
+              <div class="comp-card__title">Haute Performance</div>
+              <div class="comp-card__subtitle">6+ projets / mois</div>
+              <ul class="comp-card__list">
+                <li>~1 500€+ / semaine</li>
+                <li>6 000€+ / mois</li>
+                <li>72 000€+ / an</li>
+              </ul>
+              <div class="comp-card__total">6 000€+ / mois — 72 000€+ / an</div>
+            </div>
+          </div>
+          <p class="comp-note">La rémunération est indexée sur le volume de projets livrés. Plus tu livres, plus tu gagnes. Notre objectif est de te garantir un flux régulier de projets.</p>
+        </div>
+      </div>
+    </section>
+
+    <hr class="section-separator container">
+
+    <!-- ============================
+         WHAT YOU'LL DO
+         ============================ -->
+    <section id="what-youll-do" class="container">
+      <div class="two-col reveal">
+        <div class="two-col__label">What You'll Do</div>
+        <div class="two-col__content">
+          <div class="wydo-grid">
+            <div class="wydo-card">
+              <div class="wydo-card__number">001</div>
+              <div class="wydo-card__text">Développer des apps sur-mesure pour nos clients (coaches, consultants, formateurs) en suivant les SOPs de développement et la méthodologie ESA.</div>
+            </div>
+            <div class="wydo-card">
+              <div class="wydo-card__number">002</div>
+              <div class="wydo-card__text">Suivre les process de livraison : chaque projet a des étapes claires, des deadlines, et des critères de qualité définis dans les SOPs.</div>
+            </div>
+            <div class="wydo-card">
+              <div class="wydo-card__number">003</div>
+              <div class="wydo-card__text">Communiquer l'avancement des projets, signaler les blocages rapidement, et proposer des solutions de manière proactive.</div>
+            </div>
+            <div class="wydo-card">
+              <div class="wydo-card__number">004</div>
+              <div class="wydo-card__text">Assurer la maintenance et le suivi des applications déjà livrées aux clients existants.</div>
+            </div>
+            <div class="wydo-card">
+              <div class="wydo-card__number">005</div>
+              <div class="wydo-card__text">Évoluer avec la structure — à terme, tu auras l'opportunité de gérer une équipe de développeurs et de monter en responsabilités et en rémunération.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <hr class="section-separator container">
+
+    <!-- ============================
+         YOU SHOULDN'T APPLY IF
+         ============================ -->
+    <section class="container">
+      <div class="two-col reveal">
+        <div class="two-col__label">You Shouldn't<br>Apply If</div>
+        <div class="two-col__content">
+          <ul class="bullet-list bullet-list--red">
+            <li>Tu cherches une mission d'1h par jour. Ce poste demande un engagement régulier et sérieux.</li>
+            <li>Tu as déjà une agence ou un business en parallèle que tu veux scaler — on a besoin de quelqu'un focus sur nos projets.</li>
+            <li>Tu n'utilises pas Claude Code ou tu refuses de travailler avec des outils d'IA. C'est central dans notre façon de travailler.</li>
+            <li>Tu attends qu'on te dise exactement quoi faire à chaque micro-étape. On cherche de l'autonomie.</li>
+            <li>Tu ne parles pas français couramment. Tous nos clients sont francophones.</li>
+            <li>Tu n'es pas en mesure de gérer 3+ projets en parallèle avec des deadlines différentes.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============================
+       CTA FINAL
+       ============================ -->
+  <section class="cta" id="apply">
+    <div class="container">
+      <h2 class="cta__title reveal">Tu penses être le bon profil ?<br>Postule aujourd'hui</h2>
+      <a href="#typeform" class="cta__btn reveal">Apply Now</a>
+    </div>
+  </section>
+
+  <!-- ============================
+       FOOTER
+       ============================ -->
+  <footer class="footer">
+    <div class="container">
+      <p class="footer__text">© 2026 Wassim Ahmane · Tous droits réservés</p>
+    </div>
+  </footer>
+
+  <!-- ============================
+       JAVASCRIPT
+       ============================ -->
+  <script>
+    /* ========================================
+       Navbar scroll effect
+       ======================================== */
+    const navbar = document.getElementById('navbar');
+    let lastScroll = 0;
+
+    window.addEventListener('scroll', () => {
+      const currentScroll = window.scrollY;
+      if (currentScroll > 20) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+      lastScroll = currentScroll;
+    }, { passive: true });
+
+    /* ========================================
+       Mobile menu
+       ======================================== */
+    const menuBtn = document.getElementById('menu-btn');
+    const menuClose = document.getElementById('menu-close');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    menuBtn.addEventListener('click', () => {
+      mobileMenu.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    });
+
+    menuClose.addEventListener('click', () => {
+      mobileMenu.classList.remove('open');
+      document.body.style.overflow = '';
+    });
+
+    // Fermer le menu mobile au clic sur un lien
+    mobileMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.remove('open');
+        document.body.style.overflow = '';
+      });
+    });
+
+    /* ========================================
+       Scroll reveal animations
+       ======================================== */
+    const revealElements = document.querySelectorAll('.reveal');
+
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.1,
+      rootMargin: '0px 0px -40px 0px'
+    });
+
+    revealElements.forEach(el => revealObserver.observe(el));
+
+    /* ========================================
+       Smooth scroll pour les ancres
+       (fallback pour navigateurs sans CSS smooth)
+       ======================================== */
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        const targetId = this.getAttribute('href');
+        if (targetId === '#' || targetId === '#typeform') return;
+
+        const target = document.querySelector(targetId);
+        if (target) {
+          e.preventDefault();
+          const navbarHeight = navbar.offsetHeight;
+          const targetPosition = target.getBoundingClientRect().top + window.scrollY - navbarHeight - 20;
+          window.scrollTo({
+            top: targetPosition,
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>
