@@ -400,8 +400,12 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 1.3rem;
       margin-bottom: 16px;
+    }
+
+    .tool-card__icon svg {
+      width: 24px;
+      height: 24px;
     }
 
     .tool-card__icon--purple { background: rgba(139, 92, 246, 0.15); }
@@ -795,10 +799,10 @@
     <div class="navbar__inner">
       <a href="#" class="navbar__logo">Wassim Ahmane</a>
       <ul class="navbar__links">
-        <li><a href="#job-summary">Job Summary</a></li>
-        <li><a href="#requirements">Requirements</a></li>
-        <li><a href="#what-youll-do">What You'll Do</a></li>
-        <li><a href="#apply">Apply Now</a></li>
+        <li><a href="#job-summary">Résumé</a></li>
+        <li><a href="#requirements">Prérequis</a></li>
+        <li><a href="#what-youll-do">Tes Missions</a></li>
+        <li><a href="#apply">Postuler</a></li>
       </ul>
       <button class="navbar__menu-btn" id="menu-btn" aria-label="Ouvrir le menu">
         <span></span>
@@ -811,10 +815,10 @@
   <!-- Menu mobile -->
   <div class="mobile-menu" id="mobile-menu">
     <button class="mobile-menu__close" id="menu-close" aria-label="Fermer le menu">&times;</button>
-    <a href="#job-summary">Job Summary</a>
-    <a href="#requirements">Requirements</a>
-    <a href="#what-youll-do">What You'll Do</a>
-    <a href="#apply">Apply Now</a>
+    <a href="#job-summary">Résumé</a>
+    <a href="#requirements">Prérequis</a>
+    <a href="#what-youll-do">Tes Missions</a>
+    <a href="#apply">Postuler</a>
   </div>
 
   <main>
@@ -826,7 +830,7 @@
       <h1 class="hero__title reveal">Développeur<br>Full-Stack</h1>
       <div class="hero__badges reveal">
         <div class="hero__badge">
-          <div class="hero__badge-label">Date Posted</div>
+          <div class="hero__badge-label">Date de Publication</div>
           <div class="hero__badge-value">Mars 2026</div>
         </div>
         <div class="hero__badge">
@@ -835,11 +839,11 @@
         </div>
         <div class="hero__badge">
           <div class="hero__badge-label">Lieu</div>
-          <div class="hero__badge-value">Remote</div>
+          <div class="hero__badge-value">À Distance</div>
         </div>
         <div class="hero__badge">
           <div class="hero__badge-label">Type</div>
-          <div class="hero__badge-value">Part-Time</div>
+          <div class="hero__badge-value">Temps Partiel</div>
         </div>
       </div>
     </section>
@@ -873,7 +877,7 @@
          ============================ -->
     <section id="job-summary" class="container">
       <div class="two-col reveal">
-        <div class="two-col__label">Job Summary</div>
+        <div class="two-col__label">Résumé du Poste</div>
         <div class="two-col__content">
           <p>Rejoins une structure en pleine croissance spécialisée dans le développement d'applications web sur-mesure pour des coaches, consultants et formateurs. Tu seras en charge de développer et livrer des apps complètes en suivant des process établis (SOPs détaillés), avec un accompagnement au démarrage. Si tu es autonome, rigoureux et que tu veux évoluer dans un environnement ambitieux avec une vision long terme, ce poste est fait pour toi.</p>
         </div>
@@ -887,7 +891,7 @@
          ============================ -->
     <section class="container">
       <div class="two-col reveal">
-        <div class="two-col__label">Your Role</div>
+        <div class="two-col__label">Ton Rôle</div>
         <div class="two-col__content">
           <h3>Développeur Full-Stack</h3>
           <p>En tant que développeur, tu seras responsable de la création d'applications web sur-mesure pour nos clients (coaches, consultants, formateurs). Chaque projet suit une méthodologie précise : extraction du besoin client → structuration → développement, avec des SOPs détaillés qui te guident étape par étape.</p>
@@ -903,7 +907,7 @@
          ============================ -->
     <section class="container">
       <div class="two-col reveal">
-        <div class="two-col__label">Ideal Candidate</div>
+        <div class="two-col__label">Candidat Idéal</div>
         <div class="two-col__content">
           <ul class="bullet-list">
             <li><strong>Autonome</strong> — Tu sais avancer sans qu'on te tienne la main à chaque étape</li>
@@ -925,7 +929,7 @@
          ============================ -->
     <section id="requirements" class="container">
       <div class="two-col reveal">
-        <div class="two-col__label">Requirements</div>
+        <div class="two-col__label">Prérequis</div>
         <div class="two-col__content">
           <div class="req-cards">
             <div class="req-card">
@@ -952,26 +956,49 @@
          ============================ -->
     <section class="container">
       <div class="two-col reveal">
-        <div class="two-col__label">Tools</div>
+        <div class="two-col__label">Outils</div>
         <div class="two-col__content">
           <div class="tools-grid">
             <div class="tool-card">
-              <div class="tool-card__icon tool-card__icon--purple">🤖</div>
+              <div class="tool-card__icon tool-card__icon--purple">
+                <!-- Logo Claude / Anthropic — sparkle -->
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M15.672 6.328L14.058 10.602L18.332 8.988L19.5 12L18.332 15.012L14.058 13.398L15.672 17.672L12.66 18.84L12 15.168L11.34 18.84L8.328 17.672L9.942 13.398L5.668 15.012L4.5 12L5.668 8.988L9.942 10.602L8.328 6.328L11.34 5.16L12 8.832L12.66 5.16L15.672 6.328Z" fill="#c4b5fd"/>
+                </svg>
+              </div>
               <div class="tool-card__name">Claude Code</div>
               <div class="tool-card__desc">Notre outil principal de développement. Tu codes avec Claude Code pour accélérer la livraison et produire du code de qualité à grande vitesse.</div>
             </div>
             <div class="tool-card">
-              <div class="tool-card__icon tool-card__icon--blue">⚡</div>
+              <div class="tool-card__icon tool-card__icon--blue">
+                <!-- Logo Next.js -->
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <circle cx="12" cy="12" r="11" stroke="#93c5fd" stroke-width="1.5"/>
+                  <path d="M8 16V8L17 19" stroke="#93c5fd" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  <line x1="16" y1="8" x2="16" y2="13" stroke="#93c5fd" stroke-width="1.5" stroke-linecap="round"/>
+                </svg>
+              </div>
               <div class="tool-card__name">Next.js / React</div>
               <div class="tool-card__desc">Notre stack front-end pour toutes les applications clients. Chaque app est construite en Next.js avec React et Tailwind CSS.</div>
             </div>
             <div class="tool-card">
-              <div class="tool-card__icon tool-card__icon--green">🗄️</div>
+              <div class="tool-card__icon tool-card__icon--green">
+                <!-- Logo Supabase -->
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M13.5 21.5C13.1 22.4 11.8 22.1 11.8 21.1V13.5H19.8C21.4 13.5 22.3 15.4 21.2 16.6L13.5 21.5Z" fill="#86efac" fill-opacity="0.6"/>
+                  <path d="M10.5 2.5C10.9 1.6 12.2 1.9 12.2 2.9V10.5H4.2C2.6 10.5 1.7 8.6 2.8 7.4L10.5 2.5Z" fill="#86efac"/>
+                </svg>
+              </div>
               <div class="tool-card__name">Supabase</div>
               <div class="tool-card__desc">Notre back-end complet — base de données PostgreSQL, authentification, storage, et fonctions real-time pour chaque projet.</div>
             </div>
             <div class="tool-card">
-              <div class="tool-card__icon tool-card__icon--cyan">🚀</div>
+              <div class="tool-card__icon tool-card__icon--cyan">
+                <!-- Logo Vercel — triangle -->
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M12 3L22 20H2L12 3Z" fill="#67e8f9"/>
+                </svg>
+              </div>
               <div class="tool-card__name">Vercel + Git</div>
               <div class="tool-card__desc">Déploiement et hébergement de toutes nos apps. Chaque projet est versionné sur GitHub et déployé automatiquement via Vercel.</div>
             </div>
@@ -987,7 +1014,7 @@
          ============================ -->
     <section class="container">
       <div class="two-col reveal">
-        <div class="two-col__label">Compensation</div>
+        <div class="two-col__label">Rémunération</div>
         <div class="two-col__content">
           <div class="comp-cards">
             <div class="comp-card">
@@ -1033,7 +1060,7 @@
          ============================ -->
     <section id="what-youll-do" class="container">
       <div class="two-col reveal">
-        <div class="two-col__label">What You'll Do</div>
+        <div class="two-col__label">Tes Missions</div>
         <div class="two-col__content">
           <div class="wydo-grid">
             <div class="wydo-card">
@@ -1068,7 +1095,7 @@
          ============================ -->
     <section class="container">
       <div class="two-col reveal">
-        <div class="two-col__label">You Shouldn't<br>Apply If</div>
+        <div class="two-col__label">Ne Postule<br>Pas Si</div>
         <div class="two-col__content">
           <ul class="bullet-list bullet-list--red">
             <li>Tu cherches une mission d'1h par jour. Ce poste demande un engagement régulier et sérieux.</li>
@@ -1090,7 +1117,7 @@
   <section class="cta" id="apply">
     <div class="container">
       <h2 class="cta__title reveal">Tu penses être le bon profil ?<br>Postule aujourd'hui</h2>
-      <a href="#typeform" class="cta__btn reveal">Apply Now</a>
+      <a href="#typeform" class="cta__btn reveal">Postuler</a>
     </div>
   </section>
 
